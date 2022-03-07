@@ -131,7 +131,7 @@ xstp_init_comms_struct(struct term_node *node)
     comm_param[XSTP_MAX] = &stp_data->max_age;
     comm_param[XSTP_HELLO] = &stp_data->hello_time;  
     comm_param[XSTP_FWD] = &stp_data->forward_delay;
-    comm_param[14] = NULL;
+    comm_param[14] = stp_data->rstp_len;
     comm_param[15] = NULL;
 
     return 0;
