@@ -223,8 +223,9 @@ xstp_send_bpdu_conf(u_int8_t mac_spoofing, struct stp_data *stp_data, struct int
           stp_data->max_age,           /* max age */
           stp_data->hello_time,        /* hello time */
           stp_data->forward_delay,     /* forward delay */
-         
-          stp_data->config_id,         /* mstp config ID */
+         printf("using version 3");
+          //stp_data->config_id,         /* mstp config ID */
+          0x09,
           stp_data->config_name,       /* config name */
           stp_data->config_rev,        /* config revision */
           stp_data->config_digest,     /* config digest */
