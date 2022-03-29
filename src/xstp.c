@@ -140,7 +140,7 @@ xstp_init_comms_struct(struct term_node *node)
     comm_param[MSTP_CONF_REV] = &stp_data->config_rev;
     comm_param[MSTP_CONF_DIGEST] = &stp_data->config_digest;  
     comm_param[MSTP_INT_PATHCOST] = &stp_data->int_pc;
-    comm_param[MSTP_CONFIG_BRIDGEID] = &stp_data->cist_bridge_id;  
+    comm_param[MSTP_CONF_BRIDGEID] = &stp_data->cist_bridge_id;  
     comm_param[MSTP_HOPS] = &stp_data->hops;
    
     comm_param[14] = NULL;
