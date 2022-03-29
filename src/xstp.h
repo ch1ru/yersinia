@@ -129,6 +129,19 @@ static struct proto_features xstp_features[] = {
 #define XSTP_HELLO      12
 #define XSTP_FWD        13
 
+//RSTP and MSTP
+#define XSTP_LEN            14
+
+//MSTP
+#define MSTP_LEN            15
+#define MSTP_CONF_ID        16
+#define MSTP_CONF_NAME      17
+#define MSTP_CONF_REV       18
+#define MSTP_CONF_DIGEST    19
+#define MSTP_INT_PATHCOST   20
+#define MSTP_BRIDGEID       21
+#define MSTP_HOPS           22
+
 int8_t xstp_com_version(void *, void *, char *);
 int8_t xstp_com_type(void *, void *, char *);
 int8_t xstp_com_other(void *, void *, char *);
@@ -186,8 +199,19 @@ struct stp_data { /* STP and Ethernet fields*/
                  u_int16_t max_age;
                  u_int16_t hello_time;
                  u_int16_t forward_delay;
+       
+                 //rstp
                  u_int8_t  *rstp_data;
                  u_int8_t  rstp_len;
+       
+                 //mstp
+                 u_int8_t  config_id;
+                 char*     config_name;
+                 u_int16_t config_rev;
+                 u_int8_t  config_digest[16];
+                 u_int32_t int_pc;
+                 u_int8_t  cist_bridge_id[8];
+                 u_int8_t  hops;
                  int8_t    do_ack;        /* Do TOP_CHANGE_ACK */
 };
 
