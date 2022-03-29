@@ -153,7 +153,7 @@ term_destroy(void)
 #endif
 
    pthread_mutex_destroy(&terms->admin_listen_th.finished);
-   pthread_mutex_destroy(&terms->gui_th.finished);
+   //pthread_mutex_destroy(&terms->gui_th.finished);
    pthread_mutex_destroy(&terms->pcap_listen_th.finished);
    pthread_mutex_destroy(&terms->uptime_th.finished);
 
