@@ -703,9 +703,6 @@ void xstp_th_nondos_role( void *arg )
                             stp_data->flags = flags_tmp;
                         }
                     break;
-                   case BPDU_CONF_MSTP:
-                      stp_data->config_id = 0x09;
-                      break;
                     case BPDU_TCN:
                         flags_tmp = stp_data->flags;
                         stp_data->flags |= STP_TOPOLOGY_CHANGE_ACK;
@@ -1102,6 +1099,10 @@ xstp_learn_packet(struct attacks *attacks, char *iface, u_int8_t *stop, void *da
 #endif
 
                 stp_data->version = *((u_int8_t *)stp_conf+2);
+              
+              if(stp_data->version == MSTP_VERSION) {
+                 stp_data->config_id = 0x09;
+              }
 
                 stp_data->bpdu_type = *((u_int8_t *)stp_conf+3);
 
