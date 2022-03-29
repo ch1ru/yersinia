@@ -206,7 +206,7 @@ struct stp_data { /* STP and Ethernet fields*/
        
                  //mstp
                  u_int8_t  config_id;
-                 char*     config_name;
+                 u_int8_t  config_name[32];
                  u_int16_t config_rev;
                  u_int8_t  config_digest[16];
                  u_int32_t int_pc;
