@@ -703,6 +703,9 @@ void xstp_th_nondos_role( void *arg )
                             stp_data->flags = flags_tmp;
                         }
                     break;
+                   case BPDU_CONF_MSTP:
+                      stp_data->config_id = 0x09;
+                      break;
                     case BPDU_TCN:
                         flags_tmp = stp_data->flags;
                         stp_data->flags |= STP_TOPOLOGY_CHANGE_ACK;
