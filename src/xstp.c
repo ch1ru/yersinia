@@ -197,7 +197,7 @@ xstp_send_bpdu_conf(u_int8_t mac_spoofing, struct stp_data *stp_data, struct int
     
     lhandler = iface->libnet_handler;
    
-   if(stp_data->bpdu_type == "MSTP") {
+   if(stp_data->version == 0x03) {
       t = libnet_build_mstp_conf(
           stp_data->id,                /* protocol id */
           stp_data->version,           /* protocol version */
