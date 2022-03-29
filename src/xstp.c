@@ -131,6 +131,18 @@ xstp_init_comms_struct(struct term_node *node)
     comm_param[XSTP_MAX] = &stp_data->max_age;
     comm_param[XSTP_HELLO] = &stp_data->hello_time;  
     comm_param[XSTP_FWD] = &stp_data->forward_delay;
+    //comm_param[XSTP_LEN] = &stp_data->forward_delay;
+   
+   //mstp
+    //comm_param[MSTP_LEN] = &stp_data->bridge_id;
+    comm_param[MSTP_CONF_ID] = &stp_data->config_id;
+    comm_param[MSTP_CONF_NAME] = &stp_data->config_name; 
+    comm_param[MSTP_CONF_REV] = &stp_data->config_rev;
+    comm_param[MSTP_CONF_DIGEST] = &stp_data->config_digest;  
+    comm_param[MSTP_INT_PATHCOST] = &stp_data->int_pc;
+    comm_param[MSTP_CONFIG_BRIDGEID] = &stp_data->cist_bridge_id;  
+    comm_param[MSTP_HOPS] = &stp_data->hops;
+   
     comm_param[14] = NULL;
     comm_param[15] = NULL;
 
@@ -211,13 +223,14 @@ xstp_send_bpdu_conf(u_int8_t mac_spoofing, struct stp_data *stp_data, struct int
           stp_data->max_age,           /* max age */
           stp_data->hello_time,        /* hello time */
           stp_data->forward_delay,     /* forward delay */
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
+         
+          stp_data->config_id,         /* mstp config ID */
+          stp_data->config_name,       /* config name */
+          stp_data->config_rev,        /* config revision */
+          stp_data->config_digest,     /* config digest */
+          stp_data->int_pc,            /* internal path cost */
+          stp_data->cist_bridge_id,    /* cist bridge id */
+          stp_data->hops,              /* remaining hops */
           stp_data->rstp_data,         /* payload */
           stp_data->rstp_len,          /* payload size */
           lhandler,                    /* libnet handle */
