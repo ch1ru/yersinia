@@ -206,6 +206,7 @@ xstp_send_bpdu_conf(u_int8_t mac_spoofing, struct stp_data *stp_data, struct int
     libnet_t *lhandler;
     int32_t sent;
     struct interface_data *iface_data;
+   printf("using version 3");
     
     lhandler = iface->libnet_handler;
    
@@ -223,7 +224,6 @@ xstp_send_bpdu_conf(u_int8_t mac_spoofing, struct stp_data *stp_data, struct int
           stp_data->max_age,           /* max age */
           stp_data->hello_time,        /* hello time */
           stp_data->forward_delay,     /* forward delay */
-         printf("using version 3");
           //stp_data->config_id,         /* mstp config ID */
           0x09,
           stp_data->config_name,       /* config name */
