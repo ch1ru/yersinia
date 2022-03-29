@@ -196,8 +196,35 @@ xstp_send_bpdu_conf(u_int8_t mac_spoofing, struct stp_data *stp_data, struct int
     struct interface_data *iface_data;
     
     lhandler = iface->libnet_handler;
-
-    t = libnet_build_stp_conf(
+   
+   if(stp_data->bpdu_type == "MSTP") {
+      t = libnet_build_mstp_conf(
+          stp_data->id,                /* protocol id */
+          stp_data->version,           /* protocol version */
+          stp_data->bpdu_type,         /* BPDU type */
+          stp_data->flags,             /* BPDU flags */
+          stp_data->root_id,           /* root id */
+          stp_data->root_pc,           /* root path cost */
+          stp_data->bridge_id,         /* bridge id */
+          stp_data->port_id,           /* port id */
+          stp_data->message_age,       /* message age */
+          stp_data->max_age,           /* max age */
+          stp_data->hello_time,        /* hello time */
+          stp_data->forward_delay,     /* forward delay */
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          stp_data->rstp_data,         /* payload */
+          stp_data->rstp_len,          /* payload size */
+          lhandler,                    /* libnet handle */
+          0); 
+   }
+   else {
+      t = libnet_build_stp_conf(
           stp_data->id,                /* protocol id */
           stp_data->version,           /* protocol version */
           stp_data->bpdu_type,         /* BPDU type */
@@ -213,7 +240,10 @@ xstp_send_bpdu_conf(u_int8_t mac_spoofing, struct stp_data *stp_data, struct int
           stp_data->rstp_data,         /* payload */
           stp_data->rstp_len,          /* payload size */
           lhandler,                    /* libnet handle */
-          0);                          /* libnet id */
+          0); 
+   }
+
+                             /* libnet id */
 
     if (t == -1) 
     {
